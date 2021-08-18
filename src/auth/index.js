@@ -1,10 +1,10 @@
 const jwt = require("jsonwebtoken");
-const config = require('../config');
-const error = require('../utils/error');
+const config = require("../config");
+const error = require("../utils/error");
 
 const secret = config.jwt.secret;
 
-function sing(data) {
+function sign(data) {
   return jwt.sign(data, secret);
 }
 
@@ -17,27 +17,27 @@ const check = {
     const decoded = decodeHeader(req);
     console.log(decoded);
 
-    //Comprobar si es propio o no
     if (decoded.id !== owner) {
-      throw error('No tiene permisos', 401);
+      throw error("No puedes hacer esto", 401);
     }
+  },
+  logged: function (req, owner) {
+    const decoded = decodeHeader(req);
   },
 };
 
 function getToken(auth) {
   if (!auth) {
-    throw new Error("No viene token");
+    throw error("No viene token", 401);
   }
 
   if (auth.indexOf("Bearer ") === -1) {
-    throw new Error("Token no válido");
+    throw error("Formato invalido", 401);
   }
 
-  let token = auth.replace('Bearer ', '');
-
+  let token = auth.replace("Bearer ", "");
   return token;
 }
-
 
 function decodeHeader(req) {
   const authorization = req.headers.authorization || "";
@@ -48,7 +48,8 @@ function decodeHeader(req) {
 
   return decoded;
 }
+
 module.exports = {
-  sing,
+  sign,
   check,
 };
