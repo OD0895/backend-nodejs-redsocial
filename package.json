@@ -4,7 +4,8 @@
   "description": "Curso Practico de Node JS",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/api/index.js"
+    "dev": "nodemon src/api/index.js",
+    "dev:mysql": "nodemon src/mysql/index.js"
   },
   "author": "",
   "license": "ISC",
