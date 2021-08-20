@@ -6,17 +6,20 @@
   "scripts": {
     "dev": "nodemon src/api/index.js",
     "dev:mysql": "nodemon src/mysql/index.js",
-    "dev:post": "nodemon src/post/index.js"
+    "dev:post": "nodemon src/post/index.js",
+    "dev:cache": "nodemon src/cache/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "nanoid": "^3.1.25",
+    "redis": "^3.1.2",
     "request": "^2.88.2",
     "swagger-ui-express": "^4.1.6"
   },
